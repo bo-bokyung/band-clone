@@ -52,6 +52,7 @@ header {
     box-sizing: border-box;
 }
 
+
 h1 {
     background: url(../img/spr_intro.png) no-repeat 0 -98px;
     width: 78px;
@@ -71,6 +72,11 @@ h1 {
     align-items: center;
     gap: 8px;
 }
+
+.lang:hover {
+    text-decoration: underline;
+}
+
 .lang::after {
     display: block;
     content: '';
@@ -84,6 +90,10 @@ h1 {
     color: var(--font-black1);
 }
 
+.join:hover {
+    text-decoration: underline;
+}
+
 .login-button {
     display: block;
     color: var(--font-white2);
@@ -94,6 +104,11 @@ h1 {
     text-align: center;
     line-height: 32px;
     font-weight: bold;
+}
+
+/* box-shodaw: (x축) (y축) (블러) (컬러) */
+.login-button:hover {
+    box-shadow: 0 2px 8px #21c53180;
 }
 
 .recomend-band-contents {
@@ -146,10 +161,17 @@ h1 {
     color: var(--font-white1);
 }
 
+.intro-login:hover {
+    box-shadow: 0 2px 8px var(--naver-green);
+}
 .intro-join {
 	background-color: var(--font-white1);
 	border: 1px solid #ebebeb;
 	margin-bottom: 32px;
+}
+
+.intro-join:hover {
+    box-shadow: 0 2px 8px #00000030;
 }
 
 .intro-explane {
@@ -226,7 +248,7 @@ h1 {
 
 #recommend {
     background-color: #eef0f3;
-    padding-top: 56px;
+    padding: 56px 0;
     min-width: 1000px;
 }
 
@@ -238,6 +260,7 @@ h1 {
 .recommend-title {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .recommend-heading {
@@ -253,6 +276,10 @@ h1 {
     gap: 6px;
 }
 
+.recommend-title > a:hover {
+    text-decoration: underline;
+}
+
 .recommend-title > a::after {
     content: '';
     display: block;
@@ -263,6 +290,218 @@ h1 {
     transform: rotate(45deg);
 }
 
+/* flex-wrap: wrap을 하면 옆으로 나오는 것들이 밑으로 내려가게 정렬됨 */
+.recommend-band-list {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 32px 0;
+}
+
 .band-image {
     width: 100px;
+}
+
+.recommend-band-content {
+    display: flex;
+    width: 500px;
+    height: 100px;
+}
+
+/* flex-shrink는 flex의 수축을 0으로 하겠다, 사진크기 맞춰줌 */
+.recommend-band-content > figure {
+    flex-shrink: 0;
+}
+
+/* justify~는 어느 축을(column) 기준으로 어떻게 정렬을 할 것인가 */
+/* 수직으로 정렬할 때 item aline: center */
+.band-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 8px;
+}
+
+.band-name > a {
+    position: relative;
+    z-index: 5;
+    color: var(--font-black1);
+    font-weight: bold;
+}
+
+.band-name > a:hover {
+    text-decoration: underline;
+}
+
+/* text-overflow는 글자가 넘칠 때 어떻게 할 것인가, ellipis ...으로 표시 */
+/* white-space: nowrap 줄바꿈을 하지 않을 것 */
+/* calc함수 결과 이상 넘어가면 숨기는데 줄바꿈을 하지 않고 ...으로 표시한다 */
+.band-introduce {
+    color: var(--font-black2);
+    width: calc(500px - 100px - 16px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.band-status {
+    color: var(--font-black4);
+    font-size: 13px;
+}
+
+.band-status > span {
+    margin: 0 4px;
+}
+
+.band-member-count::after {
+    /* content: '';
+    display: block;
+    width: 2px;
+    height: 2px;
+    border-radius: 50px;
+    background-color: black; */
+    content: 'ㆍ';
+    margin-left: 4px;
+}
+
+.more-view {
+    display: flex;
+    width: fit-content;
+    background-color: white;
+    height: 24px;
+    border-radius: 12px;
+    border:1px solid #e3e3e3;
+    padding: 0 8px;
+    align-items: center;
+    /* line-height: 24px; */
+    font-size: 12px;
+    color: var(--font-black3);
+    position: relative;
+    z-index: 5;
+}
+
+.more-view:hover {
+    border: 1px solid #999;
+}
+
+.more-view::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    border: 1px solid gray;
+    border-left: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+}
+.band-category {
+    color: var(--font-black1);
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+#app-download {
+    padding: 40px 0;
+}
+
+.app-download-container {
+    display: flex;
+    width: var(--container-size);
+    margin: 0 auto;
+    align-items: center;
+    gap: 16px;
+}
+
+.app-icon {
+    background: url(../img/spr_intro.png) no-repeat -162px 0;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.app-download-contents {
+    width: 100%;
+}
+
+.go-to-store {
+    display: flex;
+    gap: 8px;
+}
+
+.go-to-store > a {
+    display: block;
+}
+
+.google-play {
+    background: url('../img/spr_intro.png') no-repeat 0 0;
+	width: 160px;
+	height: 47px;
+}
+
+.app-store {
+    background: url('../img/spr_intro.png') no-repeat 0 -49px;
+	width: 160px;
+	height: 47px;
+}
+
+.app-download-heading {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.app-download-heading + p {
+    color: var(--font-black3);
+    font-size: 14px;
+}
+
+#agree-cookie {
+    background-color: rgba(34, 34, 34, 0.96);
+    padding: 16px 0;
+    color: var(--font-white2);
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.cookie-container {
+    display: flex;
+    width: var(--container-size);
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cookie-explain {
+    display: flex;
+}
+
+.cookie-explain > a {
+    color: var(--footer-font-dark);
+    text-decoration: underline;
+}
+
+.cookie-explain > a:hover {
+
+}
+.cookie-explain > a {
+    color: var(--footer-font-dark);
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 8px;
+}
+.cookie-buttons > a {
+    display: block;
+    padding: 6px 12px;
+    background-color: var(--naver-green);
+    color: var(--font-white2);
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cookie-buttons > .no {
+    background-color: #999;
 }
